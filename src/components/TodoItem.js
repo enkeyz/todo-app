@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "../css/TodoItem.css";
 import "../css/buttons.css";
 
 const TodoItem = ({ text, id, removeTodo, editTodo }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [todoText, setEditingText] = useState(text);
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (!isEditing) return;
+
+    inputRef.current.focus();
+  }, [isEditing]);
 
   return (
     <div className="todo-item">
@@ -15,6 +22,7 @@ const TodoItem = ({ text, id, removeTodo, editTodo }) => {
             value={todoText}
             onChange={(ev) => setEditingText(ev.target.value)}
             className="todo-item__inline"
+            ref={inputRef}
           />
           <button
             type="button"
@@ -43,7 +51,9 @@ const TodoItem = ({ text, id, removeTodo, editTodo }) => {
             <button
               type="button"
               className="btn--edit"
-              onClick={() => setIsEditing(true)}
+              onClick={() => {
+                setIsEditing(true);
+              }}
             >
               edit
             </button>
