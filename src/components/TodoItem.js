@@ -30,7 +30,7 @@ const TodoItem = ({ text, id, removeTodo, editTodo }) => {
       ) : (
         <>
           <p>
-            {todoText.length > 40 ? `${todoText.slice(0, 40)}...` : todoText}
+            {todoText.length > 50 ? `${todoText.slice(0, 50)}...` : todoText}
           </p>
           <div className="todo-item__buttons">
             <button
@@ -38,7 +38,7 @@ const TodoItem = ({ text, id, removeTodo, editTodo }) => {
               className="btn--delete"
               onClick={() => removeTodo(id)}
             >
-              remove
+              X
             </button>
             <button
               type="button"
