@@ -1,0 +1,27 @@
+.todo-header {
+  text-align: center;
+  padding: 2rem;
+}
+
+.todo-main {
+  min-height: 100vh;
+}
+
+.todo-section {
+  width: 100%;
+  height: 100%;
+}
+
+.todo-list {
+  margin: 0 auto;
+  padding: 2rem;
+  height: 100%;
+  width: 30%;
+  min-width: 30rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #e6e6ec;
+  border-radius: 10px;
+}

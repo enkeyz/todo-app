@@ -23,12 +23,14 @@ const App = () => {
   return (
     <>
       <header className="todo-header">
-        <h2>Todo app</h2>
+        <h1>Todo app</h1>
       </header>
       <main className="todo-main">
         <section className="todo-section">
           <TodoForm addTodo={addTodo} />
-          <TodoList list={todoArray} removeTodo={removeTodo} />
+          {todoArray.length > 0 && (
+            <TodoList list={todoArray} removeTodo={removeTodo} />
+          )}
         </section>
       </main>
     </>

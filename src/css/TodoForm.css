@@ -1,0 +1,17 @@
+.todo-form {
+  padding: 2rem 0;
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+
+.todo-input {
+  padding: 1rem;
+  width: 40%;
+  outline: none;
+  font-family: inherit;
+  font-size: 1rem;
+  border: none;
+  border-radius: 50px;
+  box-shadow: -7px 11px 19px -2px rgba(0, 0, 0, 0.75);
+}

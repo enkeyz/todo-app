@@ -1,0 +1,31 @@
+.todo-item {
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #fbfafb;
+  margin-bottom: 1rem;
+  border-radius: 50px;
+  overflow: hidden;
+  animation: opacityAnimation 0.2s ease-in;
+}
+
+@keyframes opacityAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.todo-item .todo-item__text {
+  display: inline-block;
+}
+
+.todo-item__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

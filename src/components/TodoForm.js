@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../css/TodoForm.css";
+import "../css/buttons.css";
 
 const TodoForm = ({ addTodo }) => {
   const [todoInput, setTodoInput] = useState("");
@@ -8,6 +9,7 @@ const TodoForm = ({ addTodo }) => {
     ev.preventDefault();
 
     addTodo(todoInput);
+    setTodoInput("");
   };
 
   return (
@@ -16,7 +18,9 @@ const TodoForm = ({ addTodo }) => {
         type="text"
         name="todo-text"
         id="todo-text"
+        placeholder="Todo..."
         className="todo-input"
+        required={true}
         value={todoInput}
         onChange={(ev) => setTodoInput(ev.target.value)}
       />
