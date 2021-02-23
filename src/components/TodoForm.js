@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "../css/TodoForm.css";
 import "../css/buttons.css";
 
 const TodoForm = ({ addTodo }) => {
   const [todoInput, setTodoInput] = useState("");
+  const inputRef = useRef(null);
 
   const onFormSubmit = (ev) => {
     ev.preventDefault();
@@ -11,6 +12,12 @@ const TodoForm = ({ addTodo }) => {
     addTodo(todoInput);
     setTodoInput("");
   };
+
+  useEffect(() => {
+    if (!inputRef) return;
+
+    inputRef.current.focus();
+  }, []);
 
   return (
     <form className="todo-form" onSubmit={onFormSubmit}>
@@ -23,6 +30,7 @@ const TodoForm = ({ addTodo }) => {
         required={true}
         value={todoInput}
         onChange={(ev) => setTodoInput(ev.target.value)}
+        ref={inputRef}
       />
       <button type="submit" className="btn--submit">
         submit
