@@ -44,6 +44,7 @@ todo-item--deleted {
 }
 
 .todo-item__inline {
+  background-color: #fbfafb;
   width: 100%;
   outline: none;
   font-family: inherit;
