@@ -9,11 +9,15 @@ const App = () => {
   const [todoArray, setTodoArray] = useState(getLocalStorageItems());
 
   const addTodo = (text) => {
-    setTodoArray([...todoArray, { text, id: new Date().getTime().toString() }]);
+    setTodoArray([{ text, id: new Date().getTime().toString() }, ...todoArray]);
   };
 
   const removeTodo = (id) => {
     setTodoArray(todoArray.filter((todo) => todo.id !== id));
+  };
+
+  const clearAllTodos = () => {
+    setTodoArray([]);
   };
 
   useEffect(() => {
@@ -29,7 +33,11 @@ const App = () => {
         <section className="todo-section">
           <TodoForm addTodo={addTodo} />
           {todoArray.length > 0 && (
-            <TodoList list={todoArray} removeTodo={removeTodo} />
+            <TodoList
+              list={todoArray}
+              removeTodo={removeTodo}
+              clearAllTodos={clearAllTodos}
+            />
           )}
         </section>
       </main>
