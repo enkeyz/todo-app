@@ -16,6 +16,15 @@ const App = () => {
     setTodoArray(todoArray.filter((todo) => todo.id !== id));
   };
 
+  const editTodo = (id, text) => {
+    setTodoArray(
+      todoArray.map((todo) => {
+        if (todo.id === id) return { ...todo, text };
+        return todo;
+      })
+    );
+  };
+
   const clearAllTodos = () => {
     setTodoArray([]);
   };
@@ -36,6 +45,7 @@ const App = () => {
             <TodoList
               list={todoArray}
               removeTodo={removeTodo}
+              editTodo={editTodo}
               clearAllTodos={clearAllTodos}
             />
           )}

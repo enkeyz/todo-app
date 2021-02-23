@@ -1,5 +1,5 @@
 .btn--edit {
-  margin: 0 0.6rem;
+  margin: 0 0.4rem;
   padding: 0.5rem 1rem;
   border-radius: 20px;
   outline: none;
@@ -11,7 +11,7 @@
 }
 
 .btn--delete {
-  margin: 0 0.6rem;
+  margin: 0 0.4rem;
   padding: 0.5rem 1rem;
   border-radius: 20px;
   outline: none;
@@ -23,7 +23,7 @@
 }
 
 .btn--submit {
-  margin: 0 0.6rem;
+  margin: 0 0.4rem;
   padding: 1rem 2rem;
   border-radius: 50px;
   outline: none;
