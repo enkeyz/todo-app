@@ -21,7 +21,6 @@ const TodoItem = ({ text, id, removeTodo, editTodo }) => {
             type="text"
             value={todoText}
             onChange={(ev) => setEditingText(ev.target.value)}
-            onBlur={() => setIsEditing(false)}
             className="todo-item__inline"
             ref={inputRef}
           />
