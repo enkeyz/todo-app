@@ -4,7 +4,7 @@ import "../css/buttons.css";
 
 const TodoItem = ({ text, id, removeTodo, editTodo }) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [editingText, setEditingText] = useState(text);
+  const [todoText, setEditingText] = useState(text);
 
   return (
     <div className="todo-item">
@@ -12,7 +12,7 @@ const TodoItem = ({ text, id, removeTodo, editTodo }) => {
         <>
           <input
             type="text"
-            value={editingText}
+            value={todoText}
             onChange={(ev) => setEditingText(ev.target.value)}
             className="todo-item__inline"
           />
@@ -20,7 +20,7 @@ const TodoItem = ({ text, id, removeTodo, editTodo }) => {
             type="button"
             className="btn--edit"
             onClick={() => {
-              editTodo(id, editingText);
+              editTodo(id, todoText);
               setIsEditing(false);
             }}
           >
@@ -29,7 +29,9 @@ const TodoItem = ({ text, id, removeTodo, editTodo }) => {
         </>
       ) : (
         <>
-          <p>{`${editingText.slice(0, 40)}...`}</p>
+          <p>
+            {todoText.length > 40 ? `${todoText.slice(0, 40)}...` : todoText}
+          </p>
           <div className="todo-item__buttons">
             <button
               type="button"
