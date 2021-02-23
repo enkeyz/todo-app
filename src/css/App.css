@@ -8,16 +8,14 @@
 }
 
 .todo-section {
-  width: 100%;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .todo-list {
-  margin: 0 auto;
   padding: 2rem;
-  height: 100%;
-  width: 30%;
-  min-width: 30rem;
   display: flex;
   flex-direction: column;
   align-items: center;

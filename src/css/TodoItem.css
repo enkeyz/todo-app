@@ -8,15 +8,28 @@
   margin-bottom: 1rem;
   border-radius: 50px;
   overflow: hidden;
-  animation: opacityAnimation 0.2s ease-in;
+  animation: addAnimation 0.2s ease-in;
 }
 
-@keyframes opacityAnimation {
+todo-item--deleted {
+  animation: removeAnimation;
+}
+
+@keyframes addAnimation {
   0% {
     opacity: 0;
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes removeAnimation {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 
