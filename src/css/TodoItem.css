@@ -34,7 +34,7 @@ todo-item--deleted {
 }
 
 .todo-item .todo-item__text {
-  display: inline-block;
+  cursor: pointer;
 }
 
 .todo-item__buttons {

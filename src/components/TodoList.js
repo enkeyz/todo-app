@@ -3,7 +3,13 @@ import TodoItem from "./TodoItem";
 import "../css/TodoList.css";
 import "../css/buttons.css";
 
-const TodoList = ({ list, removeTodo, clearAllTodos, editTodo }) => {
+const TodoList = ({
+  list,
+  removeTodo,
+  clearAllTodos,
+  editTodo,
+  completeTodo,
+}) => {
   return (
     <>
       <div className="todo-list">
@@ -14,6 +20,7 @@ const TodoList = ({ list, removeTodo, clearAllTodos, editTodo }) => {
               {...item}
               removeTodo={removeTodo}
               editTodo={editTodo}
+              completeTodo={completeTodo}
             />
           );
         })}

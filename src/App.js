@@ -9,7 +9,10 @@ const App = () => {
   const [todoArray, setTodoArray] = useState(getLocalStorageItems());
 
   const addTodo = (text) => {
-    setTodoArray([{ text, id: new Date().getTime().toString() }, ...todoArray]);
+    setTodoArray([
+      { text, isCompleted: false, id: new Date().getTime().toString() },
+      ...todoArray,
+    ]);
   };
 
   const removeTodo = (id) => {
@@ -20,6 +23,15 @@ const App = () => {
     setTodoArray(
       todoArray.map((todo) => {
         if (todo.id === id) return { ...todo, text };
+        return todo;
+      })
+    );
+  };
+
+  const completeTodo = (id, value) => {
+    setTodoArray(
+      todoArray.map((todo) => {
+        if (todo.id === id) return { ...todo, isCompleted: value };
         return todo;
       })
     );
@@ -47,6 +59,7 @@ const App = () => {
               removeTodo={removeTodo}
               editTodo={editTodo}
               clearAllTodos={clearAllTodos}
+              completeTodo={completeTodo}
             />
           )}
         </section>

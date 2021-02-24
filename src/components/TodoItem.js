@@ -3,7 +3,14 @@ import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import "../css/TodoItem.css";
 import "../css/buttons.css";
 
-const TodoItem = ({ text, id, removeTodo, editTodo }) => {
+const TodoItem = ({
+  text,
+  id,
+  isCompleted,
+  removeTodo,
+  editTodo,
+  completeTodo,
+}) => {
   const [isEditing, setIsEditing] = useState(false);
   const [todoText, setEditingText] = useState(text);
   const inputRef = useRef(null);
@@ -38,7 +45,11 @@ const TodoItem = ({ text, id, removeTodo, editTodo }) => {
         </>
       ) : (
         <>
-          <p>
+          <p
+            className="todo-item__text"
+            style={{ textDecoration: isCompleted ? "line-through" : "none" }}
+            onClick={() => completeTodo(id, !isCompleted)}
+          >
             {todoText.length > 50 ? `${todoText.slice(0, 50)}...` : todoText}
           </p>
           <div className="todo-item__buttons">
