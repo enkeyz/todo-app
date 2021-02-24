@@ -1,24 +1,29 @@
 .btn--edit {
-  margin: 0 0.4rem;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
+  margin-left: 0.3rem;
   outline: none;
   border: none;
   cursor: pointer;
-  background-color: #5cb85c;
-  color: #fbfafb;
-  font-size: 1rem;
+  color: #5cb85c;
+  background-color: #fbfafb;
 }
 
 .btn--delete {
-  margin: 0 0.4rem;
-  padding: 0.5rem 1rem;
-  border-radius: 100px;
+  margin-left: 0.3rem;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  color: #d9534f;
+  background-color: #fbfafb;
+}
+
+.btn--clear-all {
   outline: none;
   border: none;
   cursor: pointer;
   background-color: #d9534f;
   color: #fbfafb;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
   font-size: 1rem;
 }
 

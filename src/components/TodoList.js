@@ -17,7 +17,7 @@ const TodoList = ({ list, removeTodo, clearAllTodos, editTodo }) => {
             />
           );
         })}
-        <button className="btn--delete" onClick={clearAllTodos}>
+        <button className="btn--clear-all" onClick={clearAllTodos}>
           Clear all
         </button>
       </div>

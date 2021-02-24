@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import "../css/TodoItem.css";
 import "../css/buttons.css";
 
@@ -32,7 +33,7 @@ const TodoItem = ({ text, id, removeTodo, editTodo }) => {
               setIsEditing(false);
             }}
           >
-            done
+            <FaEdit size={20} />
           </button>
         </>
       ) : (
@@ -46,7 +47,7 @@ const TodoItem = ({ text, id, removeTodo, editTodo }) => {
               className="btn--delete"
               onClick={() => removeTodo(id)}
             >
-              X
+              <FaTrashAlt size={20} />
             </button>
             <button
               type="button"
@@ -55,7 +56,7 @@ const TodoItem = ({ text, id, removeTodo, editTodo }) => {
                 setIsEditing(true);
               }}
             >
-              edit
+              <FaEdit size={20} />
             </button>
           </div>
         </>
