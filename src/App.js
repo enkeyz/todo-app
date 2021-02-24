@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
-import getLocalStorageItems from "./utils/getLocalStorageItems";
+import { useLocalStorage } from "./hooks/useLocalStorage";
 import "./css/App.css";
 
 const App = () => {
-  const [todoArray, setTodoArray] = useState(getLocalStorageItems());
+  const [todoArray, setTodoArray] = useLocalStorage("todo-list", []);
 
   const addTodo = (text) => {
     setTodoArray([
@@ -40,10 +40,6 @@ const App = () => {
   const clearAllTodos = () => {
     setTodoArray([]);
   };
-
-  useEffect(() => {
-    localStorage.setItem("todo-list", JSON.stringify(todoArray));
-  }, [todoArray]);
 
   return (
     <>
