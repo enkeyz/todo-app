@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
+import PropTypes from "prop-types";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { TodoContext } from "../App";
 import "../css/TodoItem.css";
@@ -74,6 +75,12 @@ const TodoItem = ({ text, id, isCompleted }) => {
       )}
     </div>
   );
+};
+
+TodoItem.propTypes = {
+  text: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  isCompleted: PropTypes.bool.isRequired,
 };
 
 export default TodoItem;
