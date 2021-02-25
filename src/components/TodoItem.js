@@ -1,16 +1,11 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { TodoContext } from "../App";
 import "../css/TodoItem.css";
 import "../css/buttons.css";
 
-const TodoItem = ({
-  text,
-  id,
-  isCompleted,
-  removeTodo,
-  editTodo,
-  completeTodo,
-}) => {
+const TodoItem = ({ text, id, isCompleted }) => {
+  const { dispatch } = useContext(TodoContext);
   const [isEditing, setIsEditing] = useState(false);
   const [todoText, setEditingText] = useState(text);
   const inputRef = useRef(null);
@@ -36,7 +31,7 @@ const TodoItem = ({
             type="button"
             className="btn--edit"
             onClick={() => {
-              editTodo(id, todoText);
+              dispatch({ type: "EDIT_TODO", payload: { id, text: todoText } });
               setIsEditing(false);
             }}
           >
@@ -48,7 +43,12 @@ const TodoItem = ({
           <p
             className="todo-item__text"
             style={{ textDecoration: isCompleted ? "line-through" : "none" }}
-            onClick={() => completeTodo(id, !isCompleted)}
+            onClick={() =>
+              dispatch({
+                type: "COMPLETE_TODO",
+                payload: { id, isCompleted: !isCompleted },
+              })
+            }
           >
             {todoText.length > 50 ? `${todoText.slice(0, 50)}...` : todoText}
           </p>
@@ -56,7 +56,7 @@ const TodoItem = ({
             <button
               type="button"
               className="btn--delete"
-              onClick={() => removeTodo(id)}
+              onClick={() => dispatch({ type: "REMOVE_TODO", payload: { id } })}
             >
               <FaTrashAlt size={20} />
             </button>

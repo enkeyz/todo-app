@@ -1,30 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import TodoItem from "./TodoItem";
+import { TodoContext } from "../App";
 import "../css/TodoList.css";
 import "../css/buttons.css";
 
-const TodoList = ({
-  list,
-  removeTodo,
-  clearAllTodos,
-  editTodo,
-  completeTodo,
-}) => {
+const TodoList = () => {
+  const { state, dispatch } = useContext(TodoContext);
   return (
     <>
       <div className="todo-list">
-        {list.map((item) => {
-          return (
-            <TodoItem
-              key={item.id}
-              {...item}
-              removeTodo={removeTodo}
-              editTodo={editTodo}
-              completeTodo={completeTodo}
-            />
-          );
+        {state.todoArray.map((item) => {
+          return <TodoItem key={item.id} {...item} />;
         })}
-        <button className="btn--clear-all" onClick={clearAllTodos}>
+        <button
+          className="btn--clear-all"
+          onClick={() => dispatch({ type: "CLEAR_ALL_TODOS" })}
+        >
           Clear all
         </button>
       </div>

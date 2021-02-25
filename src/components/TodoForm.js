@@ -1,15 +1,24 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
+import { TodoContext } from "../App";
 import "../css/TodoForm.css";
 import "../css/buttons.css";
 
-const TodoForm = ({ addTodo }) => {
+const TodoForm = () => {
+  const { dispatch } = useContext(TodoContext);
   const [todoInput, setTodoInput] = useState("");
   const inputRef = useRef(null);
 
   const onFormSubmit = (ev) => {
     ev.preventDefault();
 
-    addTodo(todoInput);
+    dispatch({
+      type: "ADD_TODO",
+      payload: {
+        text: todoInput,
+        isCompleted: false,
+        id: new Date().getTime().toString(),
+      },
+    });
     setTodoInput("");
   };
 

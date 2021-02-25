@@ -2,44 +2,24 @@ import React from "react";
 
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
-import { useLocalStorage } from "./hooks/useLocalStorage";
+import { usePersistentReducer } from "./hooks/usePersistentReducer";
+import { todoReducer } from "./reducer/todoReducer";
 import "./css/App.css";
 
+export const TodoContext = React.createContext();
+
+const initialState = {
+  todoArray: [],
+};
+
 const App = () => {
-  const [todoArray, setTodoArray] = useLocalStorage("todo-list", []);
+  const [state, dispatch] = usePersistentReducer(
+    todoReducer,
+    initialState,
+    "todo-list"
+  );
 
-  const addTodo = (text) => {
-    setTodoArray([
-      { text, isCompleted: false, id: new Date().getTime().toString() },
-      ...todoArray,
-    ]);
-  };
-
-  const removeTodo = (id) => {
-    setTodoArray(todoArray.filter((todo) => todo.id !== id));
-  };
-
-  const editTodo = (id, text) => {
-    setTodoArray(
-      todoArray.map((todo) => {
-        if (todo.id === id) return { ...todo, text };
-        return todo;
-      })
-    );
-  };
-
-  const completeTodo = (id, value) => {
-    setTodoArray(
-      todoArray.map((todo) => {
-        if (todo.id === id) return { ...todo, isCompleted: value };
-        return todo;
-      })
-    );
-  };
-
-  const clearAllTodos = () => {
-    setTodoArray([]);
-  };
+  console.log(state);
 
   return (
     <>
@@ -48,16 +28,10 @@ const App = () => {
       </header>
       <main className="todo-main">
         <section className="todo-section">
-          <TodoForm addTodo={addTodo} />
-          {todoArray.length > 0 && (
-            <TodoList
-              list={todoArray}
-              removeTodo={removeTodo}
-              editTodo={editTodo}
-              clearAllTodos={clearAllTodos}
-              completeTodo={completeTodo}
-            />
-          )}
+          <TodoContext.Provider value={{ state, dispatch }}>
+            <TodoForm />
+            {state.todoArray.length > 0 && <TodoList />}
+          </TodoContext.Provider>
         </section>
       </main>
     </>
