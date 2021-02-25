@@ -8,29 +8,24 @@
   margin-bottom: 1rem;
   border-radius: 50px;
   overflow: hidden;
-  animation: addAnimation 0.2s ease-in;
 }
 
-todo-item--deleted {
-  animation: removeAnimation;
+.todo-item-enter {
+  opacity: 0;
 }
 
-@keyframes addAnimation {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+.todo-item-enter--active {
+  opacity: 1;
+  transition: opacity 0.2s ease-in;
 }
 
-@keyframes removeAnimation {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+.todo-item-exit {
+  opacity: 1;
+}
+
+.todo-item-exit-active {
+  opacity: 0;
+  transition: opacity 0.2s ease-in;
 }
 
 .todo-item .todo-item__text {
