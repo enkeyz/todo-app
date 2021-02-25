@@ -19,8 +19,6 @@ const App = () => {
     "todo-list"
   );
 
-  console.log(state);
-
   return (
     <>
       <header className="todo-header">
