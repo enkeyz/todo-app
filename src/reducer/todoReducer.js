@@ -3,7 +3,7 @@ const todoReducer = (state, action) => {
     case "ADD_TODO": {
       return {
         ...state,
-        todoArray: [...state.todoArray, action.payload],
+        todoArray: [action.payload, ...state.todoArray],
       };
     }
     case "REMOVE_TODO": {
